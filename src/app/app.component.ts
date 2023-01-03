@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angularTraining';
+
+  public name:string = '';
+  public cities:Array<string> = ['Barcelona', 'Madrid', 'Lima'];
+  public selection!: string;
+  public criteria:string = '';
+
+  addNewCity(city: string):void {
+    this.cities.push(city);
+  }
+
+  onCityClicked(city: string): void {
+    console.log('City ->', city);
+    this.selection = city;
+  }
+
+  onClear(): void {
+    this.selection = '';
+  }
 }
+
